@@ -1,5 +1,5 @@
 # Base configs
-baseurl: "https://semir-tursunovic.github.io/photography/"
+baseurl: "https://semir-t.github.io/photography/"
 image_fulls_loc: "/images/fulls"
 image_thumbs_loc: "/images/thumbs"
 google_analytics: "UA-46465113-2"
@@ -17,7 +17,7 @@ footer:
  github: ""
 web_design: "AJ"
 social_urls:
-  instagram: "https://www.github.com/semir-tursunovic"
-  dribbble: "https://www.github.com/semir-tursunovic"
-  linkedin: "https://www.github.com/semir-tursunovic"
-  github: "https://www.github.com/semir-tursunovic"
+  instagram: "https://www.github.com/semir-t"
+  dribbble: "https://www.github.com/semir-t"
+  linkedin: "https://www.github.com/semir-t"
+  github: "https://www.github.com/semir-t"
