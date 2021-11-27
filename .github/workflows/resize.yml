@@ -13,14 +13,13 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@master
 
-      - name: Compress Images
-        id: resize-images
-        uses: petems/img-resizer-inplace@master
+      - name: Image Resizer Action
+        uses: sharadcodes/img-resizer@v1.1
         with:
-          target: images/ # directory to look for images in
-          dimensions: 90% # parameter to change size
-          widthLimit: 1024 # max width to check
-          heightLimit: 768 # max height to check
+          image-folder: 'images/fulls' # This is a Required field & this folder has original images
+          new-resolution: '512x341' # This is Required field
+          output-folder: "images/thumbs" # This is Required field & this folder will be used to store resized images
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v4
         with:
