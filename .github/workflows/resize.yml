@@ -1,9 +1,9 @@
 name: Resize images
 
 on:
-  push:
+  push: 
     branches: [ $default-branch ]
-  jobs:
+jobs:
     build:
       name: Image Resizer Inplace Limit
       runs-on: ubuntu-latest
