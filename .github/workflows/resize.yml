@@ -1,18 +1,47 @@
-  name: Image Resizer Action
-  on:
-    push:
+name: Resize images
 
-  jobs:
-    resize:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Image Resizer Action
-          uses: sharadcodes/img-resizer@v1.1
-          with:
-           image-folder: 'fulls' # This is a Required field & this folder has original images
-           new-resolution: '512x341' # This is Required field
-           output-folder: "thumbs" # This is Required field & this folder will be used to store resized images
+on:
+  pull_request:
+    paths:
+      - 'images/fulls/**.jpg'
+      - 'images/fulls/**.jpeg'
+      - 'images/fulls/**.png'
 
+jobs:
+  build:
+    name: Image Resizer Inplace Limit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
 
-
+      - name: Compress Images
+        id: resize-images
+        uses: petems/img-resizer-inplace@master
+        with:
+          target: images/ # directory to look for images in
+          dimensions: 90% # parameter to change size
+          widthLimit: 1024 # max width to check
+          heightLimit: 768 # max height to check
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          add: 'images/'
+          author_name: "github-actions[bot]"
+          author_email: "github-actions@users.noreply.github.com"
+          message: |
+            Images Reszied by Github action\n
+            ```
+            ${{steps.resize-images.outputs.images_changed}}
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: mshick/add-pr-comment@v1
+        with:
+          message: |
+            **Hello, I resized images for you!**:
+            ${{steps.csv-table-output.outputs.images_changed}}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: true
 
