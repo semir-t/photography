@@ -1,8 +1,8 @@
- name: Image Resizer Action
-  on:
-    push:
+name: Image Resizer Action
+ on:
+   push: branches: [ $default-branch ]
 
-  jobs:
+ jobs:
     resize:
       runs-on: ubuntu-latest
       steps:
