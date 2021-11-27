@@ -2,10 +2,8 @@ name: Resize images
 
 on:
   push:
-    paths:
-      - 'images/**.jpg'
-      - 'images/**.jpeg'
-      - 'images/**.png'
+    branches:
+      - master
 
 jobs:
   build:
