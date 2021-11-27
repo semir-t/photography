@@ -1,7 +1,7 @@
 name: Resize images
 
 on:
-  pull_request:
+  push:
     paths:
       - 'images/fulls/**.jpg'
       - 'images/fulls/**.jpeg'
